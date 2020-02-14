@@ -5,7 +5,7 @@ using { User, Country, managed } from '@sap/cds/common';
 entity Students: managed {
 	key ID: Integer;
 	name  : String;
-	birthdate: Date;
+	birthDate: Date;
 	registrations: Association to many Registrations on registrations.student = $self;
 }
 
