@@ -8,7 +8,7 @@ gen/
 node_modules/
 package-lock.json
 target/
-main/resources/edmx/
+**/edmx/*
 
 
 
