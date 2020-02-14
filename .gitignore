@@ -1,41 +1,55 @@
-# CAP
-_out
-.cds_gen.log
-*.db
-connection.properties
-default-*.json
+#capm generated files
 gen/
-node_modules/
-package-lock.json
-target/
-
-# Web IDE, App Studio
-.che/
 .gen/
-
-# MTA
-*_mta_build_tmp
-*.mtar
+target/
 mta_archives/
+.cds_gen.log
+.che/
 
-# Other
+#SQLite Database Files
+*.db
 .DS_Store
-*.orig
+_out
 
-fioriHtmlRunner.html
-.*/fioriHtmlRunner.html
-visual_ext_index.html
-/webapp/visual_ext_index.html
-extended_runnable_file.html
-.*/extended_runnable_file.html
-sap-ui-cachebuster-info.json
-mock_preview_sapui5.html
-.*/mock_preview_sapui5.html
-UIAdaptation_index.html
-changes_preview.js
-AppVariant_index.html
-AppVariantPreviewPayload.zip
-mergedManifestDescriptor.json
-APIExternalProducer.js
-.*/APIExternalProducer.js
-/mta_archives/
+#Visual Studio Code
+.vscode
+
+#teste
+*.orig
+**/edmx/*
+default-env.json
+.testresults
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
