@@ -16,7 +16,6 @@ service AdminService {
    };
    entity ClassRooms as projection on school.Classrooms;
    
-   
    view StudentByCourses as SELECT  from school.Courses course{
 		key ID,
 		name, 
