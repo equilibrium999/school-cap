@@ -24,10 +24,12 @@ npm set @sap:registry=https://npm.sap.com
 
 ### CDS Command Line Tools
 
-Install the CDS command line tools
+Install the cds-dk command line tools
+
+Originally the Node.js package incarnation of CAP was in the form of a single top-level module @sap/cds. Today we also have @sap/cds-dk, where the “dk” refers to “development kit”. This is the package that you’ll want to install to develop with CAP, taking advantage of all the tools that it includes; in parallel there is @sap/cds which you can think of as the leaner “runtime” package
 
 ```sh
-npm i -g @sap/cds
+npm i -g @sap/cds-dk
 ```
 
 ### Build the Project
@@ -39,7 +41,12 @@ To build the project, walk through the following steps
 3. Execute the command `npm install`to install the relevant NPM packages
 4. Execute the command `npm run build` to trigger a clean build of the project
 5. Execute the command `npm run deploy` to deploy in the local sqlite database
+6. Execute the command `cds watch`  to test and modify files and automaticaly restart the server locally 
+
+or
+
 6. Execute the command `npm start` to startup the project locally
+  
 
 You can now access the services via
 

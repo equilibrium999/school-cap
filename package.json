@@ -8,14 +8,15 @@
     "@sap/cds": "^3.21.2",
     "express": "^4.17.1",
     "hdb": "^0.17.1"
+    
   },
   "engines": {
     "node": "^8.9"
   },
   "scripts": {
-    "start": "cds run",
+    "start": "npx cds run",
     "startv2": "node v2server",
-    "start-local": "node srv/server.js",
+    "start-local": "cds watch",
     "format": "prettier-standard '**/*.js'",
     "build": "cds build/all --clean",
     "test": "standard && jest",
@@ -29,7 +30,8 @@
     "prettier-standard": "^16.1.0",
     "sqlite3": "^4.1.1",
     "standard": "^14.3.1",
-    "supertest": "latest"
+    "supertest": "latest",
+    "@sap/cds-dk": "^1.4.4"
   },
   "cds": {
     "requires": {
@@ -55,10 +57,10 @@
       }
     }
   },
- "husky": {
+  "husky": {
     "hooks": {
-    "pre-commit": "npm run format",
-    "pre-push": "npm run format"
+      "pre-commit": "npm run format",
+      "pre-push": "npm run format"
     }
   },
   "standard": {
