@@ -13,15 +13,23 @@ entity Courses: managed{
 	key ID: Integer;
 	name: localized String;
 	courseLoad: Integer;
-	registrations: Association to many Registrations on registrations.course = $self;
 	classRoom: Association to Classrooms;
-	
+	classes: Association to many Classes on classes.course = $self;
+}
+
+entity Classes: managed{
+	key ID: Integer;
+	name: String;
+	beginDate: Date;
+	finishDate: Date;
+	course: Association to Courses;
+	registrations: Association to many Registrations on registrations.class = $self;
 }
 
 entity Registrations: managed{
 	key ID: UUID;
 	student: Association to Students;
-	course: Association to Courses;
+	class: Association to Classes;
 	Date: Date;
 }
 

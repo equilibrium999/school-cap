@@ -4,31 +4,53 @@
 
 module.exports = (srv) => {
 
-  srv.before ('CREATE','Registrations', async (req) => {
-    
+  srv.before('CREATE', 'Registrations', async (req) => {
+
     //Get transaction of the request
     const tx = cds.transaction(req);
 
-    //Search using CQL, parsing to CQN
-    //MOre infos in https://cap.cloud.sap/docs/cds/cql
-    let selectQuery = "SELECT from school.Registrations{count(student_ID) as count} where course_ID = " + req.data.course_ID;
-    let query = cds.parse.cql(selectQuery);
-    let studentCount = await tx.run(query);
-    studentCount = studentCount[0];
-    
-    //Using CQN to read Courses
-    //More infos in https://cap.cloud.sap/docs/cds/cqn
-    let courses = await tx.read('school.Courses').where({ID:req.data.course_ID});
-    let classRoomId = courses[0].classRoom_ID;
+    //check if the student has already been enrolled
 
-    // Using CQN SELECT to read maxClassRoom
-    let maxClassRoom = await tx.run(SELECT('maxStudents').from('school.Classrooms').where({ID:classRoomId}));
-    maxClassRoom = maxClassRoom[0];
+    let enrollment = await tx.read('school.Registrations').where({ student_ID: req.data.student_ID });
+    if (enrollment)
+      req.error(410, 'The student has already been enrolled');
+    else {
 
-    //Check Max Number of Students in ClassRoom
-    if((studentCount.count + 1) > maxClassRoom.maxStudents)
-      req.error(409,'Turma cheia');
-  	
+      //Search using CQL, parsing to CQN
+      //MOre infos in https://cap.cloud.sap/docs/cds/cql
+      let selectQuery = "SELECT from school.Registrations{count(student_ID) as count} where class_ID = " + req.data.class_ID;
+      let query = cds.parse.cql(selectQuery);
+      let studentCount = await tx.run(query);
+      studentCount = studentCount[0];
+
+      //Using CQN to read Courses
+      //More infos in https://cap.cloud.sap/docs/cds/cqn
+      let classes = await tx.read('school.Classes').where({ ID: req.data.class_ID });
+      let course_ID = classes[0].course_ID;
+      console.log(course_ID);
+
+      let courses = await tx.read('school.Courses').where({ ID: course_ID });
+      let classRoomId = courses[0].classRoom_ID;
+      console.log(classRoomId);
+
+      // Using CQN SELECT to read maxClassRoom
+      let maxClassRoom = await tx.run(SELECT('maxStudents').from('school.Classrooms').where({ ID: classRoomId }));
+      maxClassRoom = maxClassRoom[0];
+
+      //Check Max Number of Students in ClassRoom
+      if ((studentCount.count + 1) > maxClassRoom.maxStudents)
+        req.error(409, 'The Class is full, enrollment not possible');
+      else
+        console.log('Total Students' + studentCount + 1);
+
+    }
+    //TODO: Alterar termo Registration to enrollment  
+
+
+
+
+
+
   })
-  
+
 }

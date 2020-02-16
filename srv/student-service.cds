@@ -10,7 +10,11 @@ service StudentService {
   };
    
   entity Registrations as projection on school.Registrations;
+  entity Student as projection on school.Students;
   
-  entity ClassRooms as projection on school.Classrooms;
+  @readonly entity ClassRooms as projection on school.Classrooms;
+  @readonly entity Classes as projection on school.Classes{
+    *, course.name as courseName
+  };
   
 }

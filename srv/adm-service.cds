@@ -5,21 +5,22 @@ service AdminService {
    	*,
    	registrations: redirected to Registrations,
    };
-   entity Courses as projection on school.Courses{
-   	*,
-   	registrations: redirected to Registrations,
-   };
+   entity Courses as projection on school.Courses;
+   	
    entity Registrations as projection on school.Registrations{
    	 *,
-        course: redirected to Courses,
+        class: redirected to Classes,
         student: redirected to Students,
    };
    entity ClassRooms as projection on school.Classrooms;
    
+   entity Classes as projection on school.Classes;
+
    view StudentByCourses as SELECT  from school.Courses course{
 		key ID,
 		name, 
-		registrations.student.name as studentName
+      classes.registrations.student.name as studentName
+		
 	};
 
 }
