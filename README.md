@@ -63,3 +63,62 @@ cds deploy --to sqlite:db/schoolcap.db
 ```
 Do not forget to repeat this step to initialize the local database whenever you changed the datamodel
 
+
+### deploy to SAP Cloud Platform (Trial)
+
+Check this link to references https://cap.cloud.sap/docs/advanced/deploy-to-cloud
+
+#### Prerequisites
+
+1. If you don’t have a Cloud Foundry Subaccount on SAP Cloud Platform yet, create your Trial Account: https://account.hanatrial.ondemand.com/
+2. Download and install the cf command-line client for Cloud Foundry. https://github.com/cloudfoundry/cli#downloads
+3. Log on to Cloud Foundry]
+
+```sh
+cf login  # this will ask you to select CF API, org, and space
+```
+
+#### Enhance project configuration fo SAP HANA
+In SAP Cloud you need to switch to SAP HANA as a database. 
+Add the following configuration to package.json (overwrite any existing cds configuration). Only for deployment in SAP Cloud, if you need to execute local.
+
+```sh
+"cds": {
+  "requires": {
+      "db": {
+        "kind": "hana",
+        "model": ["db","srv"]
+      }
+  }
+}
+```
+
+#### Create a service
+
+If you dont have the service created, you need to create the SAP HANA service manually (along with an HDI container and a database schema):
+
+```sh
+cf create-service hanatrial hdi-shared school-db-hdi-container
+```
+
+On payed landscapes, replace the service type hanatrial by hana. If service creation fails, see the troubleshooting guide.
+
+#### Deploy
+
+Now, build and deploy both the database part and the actual application:
+
+```sh
+cds build/all
+cf push -f gen/db
+cf push -f gen/srv --random-route
+```
+
+In the deploy log, find the application URL in the routes line at the very end:
+
+```sh
+name:              school-srv
+requested state:   started
+routes:            school-srv-....cfapps.sap.hana.ondemand.com
+```
+
+Open this URL in the browser and try out the provided links
