@@ -6,7 +6,7 @@ entity Students: managed {
 	key ID: Integer;
 	name  : String;
 	birthDate: Date;
-	registrations: Association to many Registrations on registrations.student = $self;
+	enrollments: Association to many Enrollments on enrollments.student = $self;
 }
 
 entity Courses: managed{
@@ -23,10 +23,10 @@ entity Classes: managed{
 	beginDate: Date;
 	finishDate: Date;
 	course: Association to Courses;
-	registrations: Association to many Registrations on registrations.class = $self;
+	enrollments: Association to many Enrollments on enrollments.class = $self;
 }
 
-entity Registrations: managed{
+entity Enrollments: managed{
 	key ID: UUID;
 	student: Association to Students;
 	class: Association to Classes;

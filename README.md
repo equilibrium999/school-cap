@@ -59,7 +59,7 @@ You can now access the services via
 Run the following command to Initialize your local SQLite DB:
 
 ```sh
-cds deploy --to sqlite:db/sitregcapm.db
+cds deploy --to sqlite:db/schoolcap.db
 ```
-
+Do not forget to repeat this step to initialize the local database whenever you changed the datamodel
 

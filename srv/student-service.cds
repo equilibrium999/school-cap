@@ -9,8 +9,8 @@ service StudentService {
   	*, classRoom.name as ClassRoomName
   };
    
-  entity Registrations as projection on school.Registrations;
-  entity Student as projection on school.Students;
+  entity Enrollments as projection on school.Enrollments;
+  entity Students as projection on school.Students;
   
   @readonly entity ClassRooms as projection on school.Classrooms;
   @readonly entity Classes as projection on school.Classes{
