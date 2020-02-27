@@ -105,5 +105,4 @@ Open this URL in the browser and try out the provided links
 
 ### Trobleshooting
 
-Erro executando mbt build
-https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows
+Error using MTA Build Tool on windows, https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows
