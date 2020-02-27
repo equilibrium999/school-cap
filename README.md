@@ -66,8 +66,6 @@ Do not forget to repeat this step to initialize the local database whenever you 
 
 ## Deploy to SAP Cloud Platform (Trial)
 
-Check this link to references https://cap.cloud.sap/docs/advanced/deploy-to-cloud
-
 #### Prerequisites
 
 1. If you don’t have a Cloud Foundry Subaccount on SAP Cloud Platform yet, [create your Trial Account:](https://account.hanatrial.ondemand.com/)
@@ -100,7 +98,6 @@ After deploy you can view the url for the service on console, the url changes ac
 
 ```sh
 Application "school-srv" started and available at "...school-srv...."
-routes:            school-srv-....cfapps.sap.hana.ondemand.com
 ```
 
 Open this URL in the browser and try out the provided links
