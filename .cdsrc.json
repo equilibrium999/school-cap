@@ -23,5 +23,18 @@
                 }
             }
         ]
+    },
+    "auth": {
+        "passport": {
+            "strategy": "mock",
+            "users": {
+                "administrator": {
+                    "roles": ["admin"]
+                },
+                "student": {
+                    "roles": ["student"]
+                }
+            }
+        }
     }
 }

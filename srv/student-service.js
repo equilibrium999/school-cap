@@ -31,15 +31,16 @@ module.exports = (srv) => {
     //check if the student has already been enrolled
     let enrollment = await tx.read('school.Enrollments').where({ student_ID: req.data.student_ID });
 
-    if (enrollment.length > 0)
-      req.error(410, 'The student has already been enrolled');
-    else {
+   // if (enrollment.length > 0)
+   //   req.error(410, 'The student has already been enrolled');
+   // else {
       //Search using CQL, parsing to CQN
       //MOre infos in https://cap.cloud.sap/docs/cds/cql
       let selectQuery = "SELECT from school.Enrollments{count(student_ID) as count} where class_ID = " + req.data.class_ID;
       let query = cds.parse.cql(selectQuery);
       let studentCount = await tx.run(query);
       studentCount = studentCount[0];
+      console.log(studentCount);
 
       //Using CQN to read Courses
       //More infos in https://cap.cloud.sap/docs/cds/cqn
@@ -57,11 +58,15 @@ module.exports = (srv) => {
       //Check Max Number of Students in ClassRoom
       if ((studentCount.count + 1) > maxClassRoom.maxStudents)
         req.error(409, 'The Class is full, enrollment is not possible');
-      else
-        console.log('Total Students' + studentCount + 1);
+      else{
+        console.log('Total Students ' + ( studentCount.count + 1 ));
+        console.log('Max Students '+ maxClassRoom.maxStudents)
+      }
+        
+        
 
 
-    }
+   // }
 
   });
 

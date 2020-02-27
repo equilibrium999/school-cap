@@ -3,7 +3,7 @@ using { school, sap.common } from '../db/data-model';
 
 
 
-service StudentService {
+service StudentService @(requires:'authenticated-user'){
 
   @readonly entity Courses as SELECT from school.Courses;
    

@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "ee90f5d5-58ae-42c8-9b9f-310c8020a529",
+		"name": "school",
+		"description": "tests in app school\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create_student",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "administrator",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"name\":\"João Paulo Teste\",\n \"birthDate\": \"1982-08-29\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4004/student/Students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4004",
+					"path": [
+						"student",
+						"Students"
+					]
+				},
+				"description": "Create a new Student"
+			},
+			"response": []
+		},
+		{
+			"name": "enroll_student",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "student",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"Date\":\"2020-02-27\",\n\"student_ID\":6,\n\"class_ID\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4004/student/Enrollments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4004",
+					"path": [
+						"student",
+						"Enrollments"
+					]
+				},
+				"description": "Register a studant in a course"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

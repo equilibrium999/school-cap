@@ -65,6 +65,14 @@ cds deploy --to sqlite:db/schoolcap.db
 Do not forget to repeat this step to initialize the local database whenever you changed the datamodel
 
 
+### How to Test
+
+To test the services to read data you can only execute and access the url. Admin services in the local enviroment uses the user "admin" without inform password.
+The Student services, inform the user "student", without password.
+
+To test the creation services (Create Student and Enrollment), use the postman collection file: test\school.postman_collection.json. [Install Postman](https://www.postman.com/downloads/) and import this file. To create a new student use create_student. To Enroll this student in a class use enroll_student.
+
+
 ## Deploy to SAP Cloud Platform (Trial)
 
 #### Prerequisites
