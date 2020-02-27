@@ -27,7 +27,6 @@
   },
   "devDependencies": {
     "@sap/cds-dk": "^1.4.4",
-    "husky": "^4.2.1",
     "jest": "^25.1.0",
     "prettier-standard": "^16.1.0",
     "sqlite3": "^4.1.1",
@@ -56,12 +55,6 @@
       "odata": {
         "version": "v4"
       }
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run format",
-      "pre-push": "npm run format"
     }
   },
   "standard": {
