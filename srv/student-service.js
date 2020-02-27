@@ -45,9 +45,10 @@ module.exports = (srv) => {
       //More infos in https://cap.cloud.sap/docs/cds/cqn
       let classes = await tx.read('school.Classes').where({ ID: req.data.class_ID });
       let course_ID = classes[0].course_ID;
+      let classRoomId = classes[0].classRoom_ID;
 
-      let courses = await tx.read('school.Courses').where({ ID: course_ID });
-      let classRoomId = courses[0].classRoom_ID;
+      //let courses = await tx.read('school.Courses').where({ ID: course_ID });
+      //let classRoomId = courses[0].classRoom_ID;
 
       // Using CQN SELECT to read maxClassRoom
       let maxClassRoom = await tx.run(SELECT('maxStudents').from('school.Classrooms').where({ ID: classRoomId }));

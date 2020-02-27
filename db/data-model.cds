@@ -12,8 +12,7 @@ entity Students: managed {
 entity Courses: managed{
 	key ID: Integer;
 	name: localized String;
-	courseLoad: Integer;
-	classRoom: Association to Classrooms;
+	courseLoad: Integer;	
 	classes: Association to many Classes on classes.course = $self;
 }
 
@@ -23,6 +22,7 @@ entity Classes: managed{
 	beginDate: Date;
 	finishDate: Date;
 	course: Association to Courses;
+	classRoom: Association to Classrooms;
 	enrollments: Association to many Enrollments on enrollments.class = $self;
 }
 
@@ -37,7 +37,7 @@ entity Classrooms: managed{
 	key ID: Integer;
 	name: String;
 	maxStudents: Integer;
-	courses: Association to many Courses on courses.classRoom = $self;
+	classes: Association to many Classes on classes.classRoom = $self;
 	
 }
 
