@@ -1,5 +1,6 @@
 # school-cap
-I make this project to pratice and study more about SAP Cloud Application Programming Model. 
+I make this project to pratice and study more about SAP Cloud Application Programming Model. More infos in this link
+http://www.saphanadev.com.br/2020/02/27/sap-cloud-application-programming-model-projeto-exemplo/
 
 ## Get Started
 
