@@ -15,9 +15,12 @@ service AdminService  @(requires:'admin'){
    };
    entity ClassRooms as projection on school.Classrooms;
    
-   entity Classes as projection on school.Classes;
+   entity Classes as projection on school.Classes{
+      *,
+      course: redirected to Courses,
+   };
 
-   view StudentByCourses as SELECT  from school.Courses course{
+   view StudentByCourses as SELECT  from school.Courses courseStudent{
 		key ID,
 		name, 
       classes.enrollments.student.name as studentName

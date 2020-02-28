@@ -36,19 +36,15 @@
   },
   "cds": {
     "requires": {
-      "dbprd": {
-        "kind": "hana",
-        "model": [
-          "db",
-          "srv"
-        ]
-      },
       "db": {
         "kind": "sqlite",
         "model": [
           "db",
           "srv"
         ],
+        "[production]": {
+          "kind": "hana"
+        },
         "credentials": {
           "database": "db/schoolcap.db"
         }

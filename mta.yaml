@@ -1,7 +1,9 @@
 ID: school
 _schema-version: "2.1"
 version: 0.0.1
-modules:
+##############  MODULES  ##################################
+modules:  
+#### We can see that module name DB is created as application, it will be in a stopped state most of the time, it is used only during deployment for HDB modules.
   - name: school-db
     type: hdb
     path: db
@@ -10,6 +12,7 @@ modules:
       disk-quota: 256M
     requires:
       - name: school-db-hdi-container
+#### The SRV Module is the backend of application, It will be started      
   - name: school-srv
     type: nodejs
     path: srv
@@ -22,6 +25,7 @@ modules:
           url: ${default-url}
     requires:
       - name: school-db-hdi-container
+##############  RESOURCES  ##################################      
 resources:
   - name: school-db-hdi-container
     parameters:
@@ -30,3 +34,4 @@ resources:
     type: com.sap.xs.hdi-container
     properties:
       hdi-container-name: ${service-name}
+############################################################      

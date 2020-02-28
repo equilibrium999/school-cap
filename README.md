@@ -91,7 +91,14 @@ cf login  # this will ask you to select CF API, org, and space
 
 To Build mta file in folder mta_arquives
 
-```sh
+```sh 
+NODE_ENV=production npm run build:cf
+```
+
+If you're running Windows then you'll need to set the environment variable first with set and then run the command, like this:
+
+```sh 
+set NODE_ENV production
 npm run build:cf
 ```
 
@@ -111,7 +118,18 @@ Application "school-srv" started and available at "...school-srv...."
 
 Open this URL in the browser and try out the provided links
 
+To check the apps and services use the following commands:
+
+```sh
+cf apps
+cf services
+```
 
 ### Trobleshooting
 
 Error using MTA Build Tool on windows, https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows
+
+### References
+
+https://github.com/SAP-samples/cloud-cap-nodejs-codejam/tree/master/exercises
+https://cap.cloud.sap/docs/
