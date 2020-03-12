@@ -5,8 +5,8 @@ using { school, sap.common } from '../db/data-model';
 
 service StudentService @(requires:'authenticated-user'){
 
-  @readonly entity Courses as SELECT from school.Courses;
-   
+  @readonly entity Courses as projection on school.Courses;
+ 
   entity Enrollments as projection on school.Enrollments;
   entity Students as projection on school.Students;
   
@@ -17,5 +17,22 @@ service StudentService @(requires:'authenticated-user'){
     classRoom.name as ClassRoomName
     
   };
-  
+
+
+  //view localized_course(p_code: String) as select from school.Courses{key ID, name} where 
+/*
+ view localizedCourse with parameters p_code : String 
+  as select from school.Courses {
+    key ID,
+    name,
+    courseLoad,
+    country.code
+  }
+
+  where country.code = :p_code; 
+*/
+ /* entity localizedCourse (p_code: String ) as select from school.Courses(country.code: :p_code);*/
+/*@readonly entity Bookinfo_CalcView_SRV (INPUT_DATE: Date) as 
+     select from Bookinfo_CalcView(IP_KPI_DATE: :INPUT_DATE) {*}
+  */
 }

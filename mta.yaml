@@ -1,12 +1,16 @@
 ID: school
 _schema-version: "2.1"
 version: 0.0.1
+parameters:
+  enable-parallel-deployments: true
 ##############  MODULES  ##################################
 modules:  
 #### We can see that module name DB is created as application, it will be in a stopped state most of the time, it is used only during deployment for HDB modules.
   - name: school-db
     type: hdb
     path: db
+    build-parameters:
+      ignore: ["node_modules/"]
     parameters:
       memory: 256M
       disk-quota: 256M
@@ -16,8 +20,10 @@ modules:
   - name: school-srv
     type: nodejs
     path: srv
+    build-parameters:
+      ignore: ["node_modules/"]    
     parameters:
-      memory: 512M
+      memory: 256M
       disk-quota: 256M
     provides:
       - name: srv_api
@@ -25,6 +31,25 @@ modules:
           url: ${default-url}
     requires:
       - name: school-db-hdi-container
+      - name: school-xsuaa
+      
+  - name: school-app-router
+    type: nodejs
+    path: app
+    build-parameters:
+      ignore: ["node_modules/"]    
+    parameters:
+       disk-quota: 256M
+       memory: 256M
+    requires:
+      - name: school-xsuaa
+      - name: srv_api
+        group: destinations
+        properties:
+          forwardAuthToken: true
+          strictSSL: false
+          name: srv_api
+          url: ~{url}
 ##############  RESOURCES  ##################################      
 resources:
   - name: school-db-hdi-container
@@ -34,4 +59,11 @@ resources:
     type: com.sap.xs.hdi-container
     properties:
       hdi-container-name: ${service-name}
+  - name: school-xsuaa
+    parameters:
+      path: ./xs-security.json      
+      service-plan: application
+      service-keys: 
+        - name: school-xsuaa-key      
+    type: com.sap.xs.uaa    
 ############################################################      

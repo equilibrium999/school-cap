@@ -1,0 +1,10 @@
+{
+    "authenticationMethod":"route",
+    "routes": [
+        {
+            "source": "^/(.*)",
+            "destination": "srv_api"
+            
+        }
+    ]
+}

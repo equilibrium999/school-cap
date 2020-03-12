@@ -5,7 +5,7 @@
   "repository": "https://github.com/balbinosoares/school-cap.git",
   "license": "Apache-2.0",
   "dependencies": {
-    "@sap/cds": "^3.21.2",
+    "@sap/cds": "^3.21.x",
     "@sap/hana-client": "^2.4.182",
     "express": "^4.17.1",
     "hdb": "^0.17.1",

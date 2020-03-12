@@ -1,6 +1,6 @@
 {
     "build": {
-        "target": "gen",
+        "target": ".",
         "tasks": [
             {
                 "for": "hana",
@@ -29,10 +29,14 @@
             "strategy": "mock",
             "users": {
                 "administrator": {
-                    "roles": ["admin"]
-                },
-                "student": {
-                    "roles": ["student"]
+                    "jwt": {
+                        "userInfo": {
+                            "logonName": "admin@example.com"
+                        },
+                        "scopes": [
+                            "admin"
+                        ]
+                    }
                 }
             }
         }
