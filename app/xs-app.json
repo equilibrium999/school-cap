@@ -2,8 +2,11 @@
     "authenticationMethod":"route",
     "routes": [
         {
-            "source": "^/(.*)",
-            "destination": "srv_api"
+            "source": "^/(.*)$",
+            "target": "$1",
+            "authenticationType": "xsuaa",
+            "destination": "srv_api",           
+            "csrfProtection": false
             
         }
     ]

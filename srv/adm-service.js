@@ -3,6 +3,7 @@
  */
 
 const util = require('./util/util.js');
+var xsenv = require('@sap/xsenv');
 
 
 module.exports = (srv) => {
@@ -61,6 +62,22 @@ module.exports = (srv) => {
 
 
   });
+
+
+  srv.before('READ', 'Classes', async (req) => {
+
+  // Read the configuration for all bound service instances
+  var services = xsenv.readServices();
+  console.log(services.serviceInstance);
+
+
+  });
+
+
+
+
+
+
 
 
 }

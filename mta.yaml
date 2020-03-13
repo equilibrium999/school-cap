@@ -32,7 +32,7 @@ modules:
     requires:
       - name: school-db-hdi-container
       - name: school-xsuaa
-      
+#### App Router used to authentication          
   - name: school-app-router
     type: nodejs
     path: app
@@ -61,7 +61,8 @@ resources:
       hdi-container-name: ${service-name}
   - name: school-xsuaa
     parameters:
-      path: ./xs-security.json      
+      path: ./xs-security.json  
+      service: xsuaa    
       service-plan: application
       service-keys: 
         - name: school-xsuaa-key      

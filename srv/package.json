@@ -5,7 +5,10 @@
     "dependencies": {
         "@sap/cds": "^3.21.2",
         "express": "^4.17.1",
-        "hdb": "^0.17.1"
+        "hdb": "^0.17.1",
+        "@sap/xsenv": "^2.2.0",
+        "@sap/xssec": "^2.2.5",
+        "passport": "^0.4.1"
     },
     "engines": {
         "node": "^8.9",
@@ -17,12 +20,16 @@
         "start": "node ./node_modules/@sap/cds/bin/cds.js serve gen/csn.json",
         "watch": "nodemon -w . -i node_modules/**,.git/** -e cds -x npm run build"
     },
-    "private": true,
     "cds": {
         "requires": {
             "db": {
                 "kind": "hana",
                 "model": "gen/csn.json"
+            }
+        },
+        "auth": {
+            "passport": {
+                "strategy": "JWT"
             }
         }
     }
