@@ -98,7 +98,7 @@ NODE_ENV=production npm run build:cf
 If you're running Windows then you'll need to set the environment variable first with set and then run the command, like this:
 
 ```sh 
-set NODE_ENV production
+set NODE_ENV=production
 npm run build:cf
 ```
 
@@ -110,13 +110,12 @@ To deploy de mta file to cloud foundry
 npm run deploy:cf
 ```
 
-After deploy you can view the url for the service on console, the url changes according you account and enviroment.
+After deploy you can view the url for the service  and App Rounter on console, the url changes according you account and enviroment.
 
 ```sh
+Application "school-app-router" started and available at "...school-app-router...."
 Application "school-srv" started and available at "...school-srv...."
 ```
-
-Open this URL in the browser and try out the provided links
 
 To check the apps and services use the following commands:
 
@@ -124,6 +123,30 @@ To check the apps and services use the following commands:
 cf apps
 cf services
 ```
+
+#### How to execute on SAP Cloud
+
+To test the application on SAP Cloud Platform you will need to configure the roles on SAP Cloud Enviroment. To do this logon in your trial account Cloud Foundry enviroment.
+
+Create the Role Collections on Cloud Foundry Enviroment
+
+1. Access the Subaccount on Cloud Foundry Enviroment. In the left menu click on Role Collections, in security menu;
+2. Create a New Role Collection. Ex. SCHOOL_AUTH
+
+Assign Role Collection to a user;
+
+3. Continuing on Subaccount area, click on Trust Configurarion in security menu;
+4. Clicque on SAP ID Service link
+5. Inform in E-mail Address the email that you uses to logon on SAP Cloud Platform, then click on Show Assignments;
+6. After click on Assign Role Collection, then select the Role Collection Created before. 
+
+
+Assign the Role Collection to Application Role
+
+1. Enter in the the DEV space where application is hosted.
+1. Access the Applications, on left side menu, then open school-app-router application.
+2. On left side menu, choose Roles.
+3. Next screen, click on plus icon on Actions. Then add the Role Collection created in previous step.
 
 ### Trobleshooting
 
