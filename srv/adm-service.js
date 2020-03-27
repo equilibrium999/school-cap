@@ -13,10 +13,10 @@ module.exports = (srv) => {
 
     //Get transaction of the request
     const tx = cds.transaction(req);
-    
-    if (!req.data.ID) {      
+
+    if (!req.data.ID) {
       req.data.ID = await autoID('Students', tx);
-      console.log(req.data);      
+      console.log(req.data);
     }
 
 
@@ -26,10 +26,10 @@ module.exports = (srv) => {
 
     //Get transaction of the request
     const tx = cds.transaction(req);
-    
-    if (!req.data.ID) {      
+
+    if (!req.data.ID) {
       req.data.ID = await autoID('Courses', tx);
-      console.log(req.data);      
+      console.log(req.data);
     }
 
 
@@ -40,10 +40,10 @@ module.exports = (srv) => {
 
     //Get transaction of the request
     const tx = cds.transaction(req);
-    
-    if (!req.data.ID) {      
+
+    if (!req.data.ID) {
       req.data.ID = await autoID('ClassRooms', tx);
-      console.log(req.data);      
+      console.log(req.data);
     }
 
 
@@ -54,11 +54,12 @@ module.exports = (srv) => {
 
     //Get transaction of the request
     const tx = cds.transaction(req);
-    
-    if (!req.data.ID) {      
-      req.data.ID = await autoID('Classes', tx);
-      console.log(req.data);      
-    }
+
+    let classes = await tx.read('school.Classes').where({ name: req.data.name });
+
+    if (classes.length > 0)
+      req.error(410, 'The class name need to be unique');
+
 
 
   });
@@ -66,9 +67,9 @@ module.exports = (srv) => {
 
   srv.before('READ', 'Classes', async (req) => {
 
-  // Read the configuration for all bound service instances
-  var services = xsenv.readServices();
-  console.log(services.serviceInstance);
+    // Read the configuration for all bound service instances
+   // var services = xsenv.readServices();
+   // console.log(services.serviceInstance);
 
 
   });
