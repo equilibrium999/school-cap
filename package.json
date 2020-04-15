@@ -7,6 +7,7 @@
   "dependencies": {
     "@sap/audit-logging": "^3.1.0",
     "@sap/cds": "^3.21.x",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.4.25",
     "@sap/hana-client": "^2.4.182",
     "@sap/xsenv": "^2.2.0",
     "@sap/xssec": "^2.2.5",
