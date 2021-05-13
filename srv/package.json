@@ -3,16 +3,17 @@
     "description": "Generated from ../package.json, do not change!",
     "version": "1.0.0",
     "dependencies": {
-        "@sap/cds": "^3.21.x",
-        "express": "^4.17.1",
-        "hdb": "^0.17.1",
-        "@sap/xsenv": "^2.2.0",
-        "@sap/xssec": "^2.2.5",
-        "passport": "^0.4.1"
+        "@sap/cds-odata-v2-adapter-proxy": "latest",
+        "@sap/cds": "latest",
+        "express": "latest",
+        "hdb": "latest",
+        "@sap/xsenv": "latest",
+        "@sap/xssec": "latest",
+        "passport": "latest"
     },
     "engines": {
-        "node": "^12",
-        "npm": "^6"
+        "node": ">=6.9.1",
+        "npm": ">=6"
     },
     "devDependencies": {},
     "scripts": {

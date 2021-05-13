@@ -1,70 +1,64 @@
 {
-  "name": "school",
-  "version": "1.0.0",
-  "description": "A project to pratice and study more about SAP Cloud Application Programming Model. ",
-  "repository": "https://github.com/balbinosoares/school-cap.git",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "@sap/audit-logging": "^3.1.0",
-    "@sap/cds": "^3.21.x",
-    "@sap/cds-odata-v2-adapter-proxy": "^1.4.25",
-    "@sap/hana-client": "^2.4.182",
-    "@sap/xsenv": "^2.2.0",
-    "@sap/xssec": "^2.2.5",
-    "express": "^4.17.1",
-    "hdb": "^0.17.1",
-    "passport": "^0.4.1"
-  },
-  "engines": {
-    "node": "^12"
-  },
-  "scripts": {
-    "start": "npx cds run",
-    "start-local": "cds watch",
-    "format": "prettier-standard '**/*.js'",
-    "build": "cds build/all --clean",
-    "test": "standard && jest",
-    "jest": "jest",
-    "debug": "node --nolazy --inspect-brk=9229 ./node_modules/gulp/bin/gulp test",
-    "deploy": "cds deploy",
-    "build:cf": "cds build/all --clean && mbt build -p=cf",
-    "deploy:cf": "cf deploy mta_archives/school_0.0.1.mtar"
-  },
-  "devDependencies": {
-    "@sap/cds-dk": "^1.4.4",
-    "jest": "^25.1.0",
-    "prettier-standard": "^16.1.0",
-    "sqlite3": "^4.1.1",
-    "standard": "^14.3.1",
-    "supertest": "latest"
-  },
-  "cds": {
-    "requires": {
-      "db": {
-        "kind": "sqlite",
-        "model": [
-          "db",
-          "srv"
-        ],
-        "[production]": {
-          "kind": "hana"
-        },
-        "credentials": {
-          "database": "db/schoolcap.db"
+    "name": "school",
+    "version": "1.0.0",
+    "description": "A project to pratice and study more about SAP Cloud Application Programming Model. ",
+    "repository": "https://github.com/balbinosoares/school-cap.git",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@sap/audit-logging": "latest",
+        "@sap/cds": "latest",
+        "@sap/cds-odata-v2-adapter-proxy": "latest",
+        "@sap/hana-client": "latest",
+        "@sap/xsenv": "latest",
+        "@sap/xssec": "latest",
+        "express": "latest",
+        "hdb": "latest",
+        "passport": "latest"
+    },
+    "engines": {
+        "node": ">=6.9.1"
+    },
+    "scripts": {
+        "start": "npx cds run",
+        "start-local": "cds watch",
+        "format": "prettier-standard '**/*.js'",
+        "build": "cds build/all --clean",
+        "test": "standard && jest",
+        "jest": "jest",
+        "debug": "node --nolazy --inspect-brk=9229 ./node_modules/gulp/bin/gulp test",
+        "deploy": "cds deploy",
+        "build:cf": "cds build/all --clean && mbt build -p=cf",
+        "deploy:cf": "cf deploy mta_archives/school_0.0.1.mtar"
+    },
+    "devDependencies": {
+        "@sap/cds-dk": "latest",
+        "jest": "latest",
+        "prettier-standard": "latest",
+        "sqlite3": "latest",
+        "standard": "latest",
+        "supertest": "latest"
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "sqlite",
+                "model": "*",
+                "credentials": {
+                    "database": "db/schoolcap.db"
+                }
+            },
+            "odata": {
+                "version": "v4"
+            }
         }
-      },
-      "odata": {
-        "version": "v4"
-      }
-    }
-  },
-  "standard": {
-    "env": [
-      "jest"
+    },
+    "standard": {
+        "env": [
+            "jest"
+        ]
+    },
+    "files": [
+        "db",
+        "srv"
     ]
-  },
-  "files": [
-    "db",
-    "srv"
-  ]
 }
