@@ -4,6 +4,12 @@ _schema-version: "2.1"
 version: 0.0.1
 parameters:
   enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - yarn install
+        - cds build/all --clean  
 ##############  MODULES  ##################################
 modules:  
 #### We can see that module name DB is created as application, it will be in a stopped state most of the time, it is used only during deployment for HDB modules.
