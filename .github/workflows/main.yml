@@ -19,8 +19,6 @@ jobs:
         node-version: 12
     - name: Install MTA Build Tool
       run: npm install -g mbt
-    - name: Install CDS SDK
-      run: npm i -g @sap/cds-dk
     # Do not generate package-lock.json
     # See https://blogs.sap.com/2020/07/07/escaping-eintegrity-hell/
     - name: Disable package-lock.json
