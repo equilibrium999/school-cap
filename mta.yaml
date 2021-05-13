@@ -3,6 +3,7 @@ _schema-version: "2.1"
 version: 0.0.1
 parameters:
   enable-parallel-deployments: true
+#### Add cds commands so we only need to call "mbt build" instead of "cds build/all --clean && mbt build -p=cf" everytime
 build-parameters:
   before-all:
     - builder: custom
